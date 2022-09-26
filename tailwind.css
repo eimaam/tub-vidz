@@ -11,7 +11,7 @@
         p-4  
         m-4 
         w-4/5 
-        rounded-lg
+        rounded-md
     }
     .flexing--row{
         @apply
