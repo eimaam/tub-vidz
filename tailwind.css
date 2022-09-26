@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components{
+    .border--style{
+        @apply 
+        border
+        border-double 
+        border-black 
+        p-4  
+        m-4 
+        w-4/5 
+        rounded-lg
+    }
+    .flexing--row{
+        @apply
+        flex
+        justify-around
+        items-center
+        gap-4
+    }
+
+}
