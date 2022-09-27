@@ -5,9 +5,9 @@
 @layer components{
     .border--style{
         @apply 
-        border
+        border-4
         border-double 
-        border-black 
+        border-gray-200 
         p-4  
         m-4 
         w-4/5 
@@ -19,6 +19,18 @@
         justify-around
         items-center
         gap-4
+    }
+    p, input, select{
+        @apply font-monospace
+    }
+    p{
+        @apply
+        text-gray-200
+    }
+    h2{
+        @apply
+        font-reem
+        uppercase
     }
 
 }
