@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TUB-VIDz | YouTube Video Downloader</title>
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Reem+Kufi+Ink&display=swap" rel="stylesheet">
@@ -16,9 +16,10 @@
 </head>
 <body class="bg-gray-200" >
     <nav class="fixed z-50 bg-slate-400 top-0 right-0 left-0 flex gap-1 p-4 items-center md:flex md:justify-between  ">
-        <p class="md:hidden">+</p>
-        <h1 class="font-bold">TUB-VIDz </h1>
-        <ul class="hidden md:flex gap-4 font-semibold text-gray-200">
+        <p class="z-50 md:hidden font-bold text-2xl" id="showNav" onclick=showHideNav()>+</p>
+        <p class="z-50 hidden md:hidden font-bold text-2xl" id="hideNav" onclick=showHideNav()>-</p>
+        <h1 class="font-bold text-2xl">TUB-VIDz </h1>
+        <ul id="mNav" class="transition fixed top-0 left-0 font-reem text-center z-10 w-full h-screen flex-col justify-center items-center gap-8 text-2xl bg-slate-400 hidden md:flex md:flex-row md:static md:h-0 md:w-max md:text-lg md:gap-4 font-semibold ">
             <li>HOME</li>
             <li>HOW-TO</li>
             <li>ABOUT US</li>
@@ -26,7 +27,8 @@
         </ul>
     </nav>
     
-    <div class="w-full p-4 mt-14 bg-cover bg-no-repeat bg-right  md:bg-no-repeat md:bg-cover" style="background-image: url('/assets/gizmodo-1.webp');">
+    <div class="w-full p-4 mt-14 bg-auto bg-no-repeat bg-left-bottom  md:bg-no-repeat md:bg-50 md:bg-right-bottom" >
+    <!-- <div class="w-full p-4 mt-14 bg-cover bg-no-repeat bg-right  md:bg-no-repeat md:bg-cover" style="background-image: url('/assets/undraw_download_re_li50.svg');"> -->
         <div class="text-center p-4 font-Inconsolata">
             <h1 class="text-4xl font-bold md:text-8xl font-bungee">"TUB-VIDz"</h1>
             <h2 class="text-xl font-bold md:text-4xl font-reem">YouTube Video Downloader</h2>
@@ -100,5 +102,6 @@
             <p>Built by Onyeka</p>
         </div>
     </footer>
+    <script src="app.js"></script>
 </body>
 </html>

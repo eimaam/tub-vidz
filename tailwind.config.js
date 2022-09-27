@@ -8,6 +8,9 @@ module.exports = {
       bungee: "'Bungee\\ Spice', 'cursive'",
       reem: "'Reem\\ Kufi\\ Ink', 'monospace'",
     },
+    backgroundSize: {
+      '50%': '50%'
+    }
   },
   plugins: [],
 }
