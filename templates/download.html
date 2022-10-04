@@ -1,0 +1,118 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TUB-VIDz | YouTube Video Downloader</title>
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <link rel="stylesheet" href="{% static '/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static '/css/fontawesome/css/all.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Reem+Kufi+Ink&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-200" >
+    <nav class="fixed z-50 bg-slate-400 top-0 right-0 left-0 flex gap-4 p-4 items-center md:flex md:justify-between">
+        <p class="z-50 text-gray-200 md:hidden font-bold text-2xl" id="showNav" onclick=showHideNav()>
+            <i class="fa-solid fa-bars"></i>
+        </p>
+        <p class="z-50 text-gray-200 hidden md:hidden font-bold text-2xl" id="hideNav" onclick=showHideNav()>
+            <i class="fa-solid fa-xmark "></i>
+        </p>
+        <h1 class="font-bold text-2xl font-bungee">TUB-VIDz </h1>
+        <ul id="mNav" class="transition fixed top-0 left-0 font-reem text-center text-gray-200 z-10 w-full h-screen flex-col justify-center items-center gap-8 text-2xl bg-slate-400 hidden md:flex md:flex-row md:static md:h-0 md:w-max md:text-lg md:gap-4 font-semibold ">
+            <li>HOME</li>
+            <li>HOW-TO</li>
+            <li>ABOUT US</li>
+            <li>CONTACT US</li>
+        </ul>
+    </nav>
+    
+    <div class="w-full p-4 mt-14 bg-auto bg-no-repeat bg-left-bottom  md:bg-no-repeat md:bg-50 md:bg-right-bottom" >
+    <!-- <div class="w-full p-4 mt-14 bg-cover bg-no-repeat bg-right  md:bg-no-repeat md:bg-cover" style="background-image: url('/assets/undraw_download_re_li50.svg');"> -->
+        <div class="text-center p-4 font-Inconsolata">
+            <h1 class="text-4xl font-bold md:text-8xl font-bungee">"TUBE-VIDz"</h1>
+            <h2 class="text-xl font-bold md:text-4xl font-reem">.YouTube Video Downloader.</h2>
+        </div>
+        <hr class="w-full md:w-2/3 ">
+        <div class="text-center m-4 md:text-2xl italic font-monospace">
+            <h3 class="font-ubuntu">Download YouTube Videos seamlessly here.</h3>
+            <h3>To download videos from YouTube to your Device or local machine, simply follow the below procedures:</h3>
+        </div>
+        <div class="w-full m-auto rounded-md md:rounded-2xl md:border-8 py-8 md:w-4/5 lg:w-2/3 md:py-20 lg:py-28 border--style flex flex-col justify-center items-center gap-4 bg-cover bg-center bg-no-repeat" >
+                <form method="post">
+                    {% csrf_token %}
+                    <input name="ytlink" type="text" placeholder="Paste link here" class='w-full p-3 italic rounded-md border-slate-400 border border-solid '/>
+                    <select name="format" id="format" title="Choose a Video  Format" class="text-gray-200 p-2 rounded-lg bg-slate-400 transition-all hover:scale-105 md:text-lg">
+                        <option value="" selected disabled>Choose Video Format</option>
+                        <option value="1080p">1080p - mp4 (Full-HD)</option>
+                        <option value="720p">720p - mp4 (m-HD)</option>
+                        <option value="480p">480p - mp4 </option>
+                        <option value="360p">360p - mp4 </option>
+                        <option value="240p">240p - mp4 </option>
+                        <option value="144p">144p - mp4 </option>
+                    </select>
+                    <button class="font-reem border--style border-none w-max px-3 py-2 text-gray-200 font-bold uppercase bg-slate-400 transition-all hover:scale-105 md:px-12 md:py-4 md:w-max">DOWNLOAD</button>
+                </form>
+                <div class="aspect-w-16 aspect-h-9">
+                    <H1>{{status}}</H1><br>
+                    <iframe src={{embd}} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+        </div>
+        <div class="w-full m-auto mb-10 flex flex-col justify-center items-center">
+            <div class="my-4">
+                <h2 class="text-xl font-bold md:text-3xl"><span class="mr-4">1.</span> Copy share link</h2>
+                <p class="italic ml-10 my-1 md:text-xl">Tap on a YouTube video and on video page, click on address bar and copy the address/URL</p>
+            </div> 
+            <div class="my-4">
+                <h2 class="text-xl font-bold md:text-3xl"><span class="mr-4">2.</span> Paste Link in download Box</h2>
+                <p class="italic ml-10 my-1 md:text-xl">Tap on a YouTube video and on video page, click on address bar and copy the address/URL</p>
+            </div> 
+            <div class="my-4">
+                <h2 class="text-xl font-bold md:text-3xl"><span class="mr-4">3.</span>Choose Video Format</h2>
+                <p class="italic ml-10 my-1 md:text-xl">Tap on a YouTube video and on video page, click on address bar and copy the address/URL</p>
+            </div>
+            <div class="my-4">
+                <h2 class="text-xl font-bold md:text-3xl"><span class="mr-4">4.</span>Hit Download Button </h2>
+                <p class="italic ml-10 my-1 md:text-xl">Tap on a YouTube video and on video page, click on address bar and copy the address/URL</p>
+            </div>  
+        </div>
+        <div class="mb-96 my-4">
+            <hr class="w-full md:w-2/3 mb-6 md:mb-10">
+            <h1 class="text-center text-slate-400 font-bold text-2xl md:text-4xl">
+                FAQ
+            </h1>
+            <hr class="m-auto w-full md:w-2/3 mt-6 md:mt-10">
+        </div>
+    </div>
+    <!-- f  o   o   t   e   r -->
+    <footer class="w-full text-lg pt-8 bottom-0 bg-slate-400 text-center">
+        <div class="flexing--row md:justify-evenly items-start text-left text-gray-200">
+            <div>
+                <b class="uppercase">Quick Links:</b>
+                <ul>
+                    <li>How-to</li>
+                    <li>Contact us</li>
+                    <li>Source Code</li>
+                </ul>
+            </div>
+            <div>
+                <ul>
+                    <li>FAQ</li>
+                    <li>Documentation</li>
+                    <li>Suggest a feature (Feedback)</li>
+                </ul>
+            </div>
+        </div>
+        <div class="bg-gray-200 mt-24">
+            <p>All rights reserved &copy; 2022</p>
+        </div>
+    </footer>
+    <script src="{% static '/js/app.js' %}"></script>
+</body>
+</html>
