@@ -1,7 +1,7 @@
 from asyncio import streams
 from fileinput import filename
 from django.shortcuts import render
-from django.conf.global_settings import MEDIA_ROOT
+from django.conf.global_settings import MEDIA_ROOT, MEDIA_URL
 from pytube import YouTube
 import ffmpeg
 
@@ -25,11 +25,11 @@ def ytbVidDownloader(request):
         link = request.POST['ytlink']
         resolution = request.POST.get('format', False)
         obj = YouTube(link)
-        obj.streams.filter(res=resolution).first().download(filename=MEDIA_ROOT+'/vid.mp4')
-        obj.streams.filter(abr='160kbps', progressive=False).first().download(filename=MEDIA_ROOT+'/aud.mp3')
+        obj.streams.filter(res=resolution).first().download(filename=MEDIA_ROOT+'vid.mp4')
+        obj.streams.filter(abr='160kbps', progressive=False).first().download(filename=MEDIA_ROOT+'aud.mp3')
         vid = ffmpeg.input(MEDIA_ROOT+'vid.mp4')
         aud = ffmpeg.input(MEDIA_ROOT+'aud.mp3')
-        filename = MEDIA_ROOT + obj.title + '.mp4'
+        filename = MEDIA_ROOT+obj.title +'.mp4'
         ffmpeg.output(aud, vid, filename).run(overwrite_output=True)
         embed_link = link.replace("watch?v=", "embed/")
         stat = "Your Video Is Downloading........"
@@ -37,7 +37,7 @@ def ytbVidDownloader(request):
         # if download:
         #     stat = "Downloaded"
         return render(request, 'download.html', {'res':resolution, 'embd':embed_link, 'status':stat})
-    return render(request, 'index.html')
+    return render(request, 'download.html')
 
 
 # def ytbVidDownloader(request):
