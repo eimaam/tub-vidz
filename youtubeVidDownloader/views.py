@@ -25,14 +25,14 @@ def ytbVidDownloader(request):
         link = request.POST['ytlink']
         resolution = request.POST.get('format', False)
         obj = YouTube(link)
-        obj.streams.filter(res=resolution).download(filename='vid.mp4')
-        obj.streams.filter(abr='160kbps', progressive=False).download(filename='aud.mp3')
-        vid = ffmpeg.input('vid.mp4')
-        aud = ffmpeg.input('aud.mp3')
+        obj.streams.filter(res=resolution).first().download(filename=MEDIA_ROOT+'/vid.mp4')
+        obj.streams.filter(abr='160kbps', progressive=False).first().download(filename=MEDIA_ROOT+'/aud.mp3')
+        vid = ffmpeg.input(MEDIA_ROOT+'vid.mp4')
+        aud = ffmpeg.input(MEDIA_ROOT+'aud.mp3')
         filename = MEDIA_ROOT + obj.title + '.mp4'
         ffmpeg.output(aud, vid, filename).run(overwrite_output=True)
         embed_link = link.replace("watch?v=", "embed/")
-        # stat = "Your Video Is Downloading........"
+        stat = "Your Video Is Downloading........"
         # download = vid.first().download()
         # if download:
         #     stat = "Downloaded"
