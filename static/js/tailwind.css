@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components{
+    .border--style{
+        @apply 
+        border 
+        border-slate-400 
+        p-4  
+        m-4 
+        w-4/5 
+        rounded-md
+        shadow-xl
+    }
+    .flexing--row{
+        @apply
+        flex
+        justify-around
+        items-center
+        gap-4
+    }
+    p, input{
+        @apply font-monospace
+    }
+    select{
+        @apply
+        font-reem
+    }
+    p{
+        @apply
+        text-black
+    }
+    h2{
+        @apply
+        font-reem
+        uppercase
+        text-slate-400
+    }
+    hr{
+        @apply
+        bg-slate-400
+        text-slate-400
+        h-px
+        border-0
+        m-auto
+    }
+    body{
+        @apply
+        font-reem
+    }
+
+}
