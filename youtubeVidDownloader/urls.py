@@ -5,7 +5,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.ytbVidHome, name='YoutubeHome'),
-    path('download/', views.ytbVidDownloader),
+    path('download/', views.ytbVidDownloader, name="Download"),
 ]
 
 if settings.DEBUG:
