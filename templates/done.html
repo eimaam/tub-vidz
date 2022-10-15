@@ -49,7 +49,8 @@
                     {% csrf_token %}
                     <input name="ytlink" type="text" placeholder="Paste link here" class='w-full p-3 italic rounded-md border-slate-400 border border-solid mb-6'/>
                     {% if embd %}
-                    <div class="aspect-w-16 aspect-h-9">
+                    <div class="aspect-w-16 aspect-h-9">                        
+                        <h1>Your Video Is Downloading............</h1>
                         <iframe src={{embd}} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                     {% endif %}

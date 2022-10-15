@@ -10,6 +10,7 @@ import os
 # Create your views here.
 def ytbVidHome(request):
     if request.method == "POST":
+        global link
         link = request.POST['ytlink']
         obj = YouTube(link)
         resolutions = []
@@ -22,6 +23,9 @@ def ytbVidHome(request):
     return render(request, 'index.html')
 
 def ytbVidDownloader(request):
+    if request.method == "POST":
+        return redirect("DownloadDone")
+    else:
         global link
         obj = YouTube(link)
         resolutions = []
@@ -30,17 +34,19 @@ def ytbVidDownloader(request):
             resolutions.append(stream.resolution)
         resolutions = list(dict.fromkeys(resolutions))
         embed_link = link.replace("watch?v=", "embed/")
-        return render(request, 'download.html', {object:obj, "embd":embed_link, "resl":resolutions})
+        context = {"vid":obj, "embd":embed_link, "resl":resolutions}
+        return render(request, 'download.html', context)
     
 
 
-def ytbVidDownloadDone(request, streams):
-    global url
+def ytbVidDownloadDone(request):
+    global link
+    embed_link = link.replace("watch?v=", "embed/")
     homedir = os.path.expanduser("~")
     dirs = homedir + '/Downloads'
-    if request.method == "POST":
-        YouTube(url).streams.get_highest_resolution().download(dirs)
-        return render(request,)
+    download = YouTube(link).streams.get_highest_resolution().download(dirs)
+    if download:
+        return render(request, 'done.html', {'embd':embed_link})
     else:
         return render(request, 'error.html')
 
