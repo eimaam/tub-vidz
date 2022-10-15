@@ -45,20 +45,10 @@
             <h3>To download videos from YouTube to your Device or local machine, simply follow the below procedures:</h3>
         </div>
         <div class="w-full m-auto rounded-md md:rounded-2xl md:border-8 py-8 md:w-4/5 lg:w-2/3 md:py-20 lg:py-28 border--style flex flex-col justify-center items-center gap-4 bg-cover bg-center bg-no-repeat" >
-                <form method="post">
+                <form method="post" class="items-center align-center justify-items-center justify-center">
                     {% csrf_token %}
                     <input name="ytlink" type="text" placeholder="Paste link here" class='w-full p-3 italic rounded-md border-slate-400 border border-solid '/>
-                    <select name="formats" id="" title="Choose a Video  Format" class="text-gray-200 p-2 rounded-lg bg-slate-400 transition-all hover:scale-105 md:text-lg">
-                        <option value="" selected disabled>Choose Video Format</option>
-                        <option value="">1080p - mp4 (Full-HD)</option>
-                        <option value="">720p - mp4 (m-HD)</option>
-                        <option value="">480p - mp4 </option>
-                        <option value="">360p - mp4 </option>
-                        <option value="">240p - mp4 </option>
-                        <option value="">144p - mp4 </option>
-                        <option value="">144p - 3gp </option>
-                    </select>
-                    <button class="font-reem border--style border-none w-max px-3 py-2 text-gray-200 font-bold uppercase bg-slate-400 transition-all hover:scale-105 md:px-12 md:py-4 md:w-max">DOWNLOAD</button>
+                    <button class="font-reem border--style border-none px-3 py-2 text-gray-200 font-bold uppercase bg-slate-400 transition-all hover:scale-105 md:px-12 md:py-4 md:w-max">GET VIDEO</button>
                 </form>
         </div>
         <div class="w-full m-auto mb-10 flex flex-col justify-center items-center">
